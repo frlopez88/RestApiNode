@@ -29,6 +29,20 @@ var bdTelefono =[
 
 ];
 
+
+// Ejercicio crera 
+// Get, Get Id y Post de bdLibro
+
+var bdLibros = [{
+
+	idlibro: 1, 
+	nombre:"Hola Mundo", 
+	edicion : 2, 
+	casaeditora : "santillana"
+
+}];
+
+
 app.get('/api/persona',  (req, res) =>{
 
 	res.send(bdPersonas);
