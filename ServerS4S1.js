@@ -73,6 +73,21 @@ app.get('/api/telefono/:pepito',  (req, res) =>{
 
 });
 
+app.post('/api/telefono', (req, res)=>{
+
+
+	const nuevoTelefono = {
+		id: bdTelefono.length+1,
+		idpersona: req.body.idpersona,
+		telefono : req.body.telefono
+	};
+
+	bdTelefono.push(nuevoTelefono);
+
+	res.send(nuevoTelefono);
+
+});
+
 
 
 app.listen(8080);
