@@ -1,0 +1,11 @@
+S4 S1 
+
+1) Instalacion de Express 
+2) Metodos de HTTP Service Request 
+	a) POST: Se utiliza en web service para crear objetos
+	b) GET: Se utiliza para traer una coleccion de objetos
+	c) PUT: Modificar un Objeto
+	d) DELETE: Borrar un Objeto 
+
+
+
