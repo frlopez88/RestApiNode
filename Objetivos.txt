@@ -8,4 +8,9 @@ S4 S1
 	d) DELETE: Borrar un Objeto 
 
 
+S4 S2
 
+	1) Manejar Los metodos:
+		UPDATE 
+		DELETE 
+	2) Operaciones de BD

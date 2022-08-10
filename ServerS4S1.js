@@ -72,6 +72,40 @@ app.post('/api/persona', (req, res) =>{
 
 });
 
+// Id del registro a actualizar
+app.put( '/api/persona/:id', (req, res)=>{
+
+
+	const personaExistente = {
+		idpersona : req.params.id,
+		nombre :  req.body.nombre
+	};
+
+	const indice = bdPersonas.findIndex( (obj => obj.id === parseInt(req.params.id) ) );
+	//console.log(`bdPersona [${indice}]`);
+	bdPersonas[indice] = personaExistente;
+	res.send(bdPersonas[indice]);
+
+});
+
+// Para borrar un registro debemos recibir de parametro el id del registro a borrar 
+
+app.delete('/api/persona/:id', (req, res) => {
+
+
+	const retorno = bdPersonas.find( c=> c.id ===  parseInt(req.params.id) );
+
+	let vdBdTemp = bdPersonas.filter(
+
+			data => data.id != req.params.id
+
+		);
+	bdPersonas = vdBdTemp;
+	
+	res.send(retorno);
+
+});
+
 
 app.get('/api/telefono',  (req, res) =>{
 
