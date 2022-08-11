@@ -19,6 +19,7 @@ app.get('/api/persona/', (req, res)=>{
 
 	let sql = "select * from tbl_persona";
 
+
 	con.connect(function(err) {
 							  if (err) throw err;
 							  con.query( sql , function (err, result, fields) {
@@ -31,7 +32,8 @@ app.get('/api/persona/', (req, res)=>{
 
 });
 
-app.get('/api/persona/:id', (req, res)=>{
+app.get('/api/persona/:pepito', (req, res)=>{
+
 
 	let con = mysql.createConnection({
 	    host: "127.0.0.1",
@@ -42,7 +44,9 @@ app.get('/api/persona/:id', (req, res)=>{
 
 	let sql = "select * from tbl_persona where id_persona = ? ";
 
-	const arreglovalores = [ req.params.id ]; 
+	
+
+	const arreglovalores = [ req.params.pepito ]; 
 
 	con.connect(function(err) {
 							  if (err) throw err;
@@ -87,6 +91,7 @@ app.post('/api/persona/', (req,res)=>{
 
 								      }else {
 
+								      	console.log(result);
 								      	personaNueva.id= result.insertId;
 								      	res.send(personaNueva);
 
@@ -148,6 +153,46 @@ app.put('/api/persona/:id', (req, res)=> {
 								    });
 	  
 });
+
+app.delete('/api/persona/:id', (req, res)=>{
+
+
+	let con = mysql.createConnection({
+	    host: "127.0.0.1",
+	    user: "root",
+	    password: "password", 
+	    database : "bd_des_web"
+  	});
+
+	var personaExistente = {
+
+		id: req.params.id
+
+
+	};
+
+	let sql = 'delete from tbl_persona where  id_persona= ? ';
+
+	const arreglovalores= [personaExistente.id];
+
+	con.query(sql, arreglovalores ,  
+	 								function (err, result) {
+								      if (err) {
+								      	
+								      	throw err;	
+
+								      }else {
+
+								      	res.send(personaExistente);
+
+								      }
+								      
+								    });
+
+
+});
+
+
 
 
 app.listen(8080);
