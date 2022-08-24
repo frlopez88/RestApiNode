@@ -4,8 +4,13 @@ const mysql = require('mysql');
 
 app.use(express.json());
 
-
-
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
 
 
 app.get('/api/persona/', (req, res)=>{
@@ -18,6 +23,7 @@ app.get('/api/persona/', (req, res)=>{
   	});
 
 	let sql = "select * from tbl_persona";
+
 
 
 	con.connect(function(err) {
@@ -68,6 +74,9 @@ app.post('/api/persona/', (req,res)=>{
 	    password: "password", 
 	    database : "bd_des_web"
   	});
+
+	console.log(res.body);
+	console.log(res.data);
 
 	var personaNueva = {
 
